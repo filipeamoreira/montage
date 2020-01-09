@@ -18,16 +18,16 @@ def perform(image_urls)
     MiniMagick::Tool::Montage.new do |montage|
       montage.geometry 'x700+0+0'
       @montage.images.each { |i| montage << i.url }
-      montage << 'raw.jpg'
+      montage << Rails.root.join('tmp/raw.jpg')
     end
 
     # Add logo watermark
-    processed_image = MiniMagick::Image.open('raw.jpg')
+    processed_image = MiniMagick::Image.open(Rails.root.join('tmp/raw.jpg'))
     processed_image.combine_options do |c|
       c.gravity 'SouthEast'
       c.draw "image Over 0,0,0,0 \"#{LOGO_FILEPATH}\""
     end
-    processed_image.write('montage.jpg')
+    processed_image.write(Rails.root.join('tmp/montage.jpg'))
     @montage.file.attach(io: File.open(processed_image.path), filename: 'montage.jpg')
     @montage.save!
   end
