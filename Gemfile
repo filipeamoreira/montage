@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'mini_magick'
 gem 'down', '~> 5.0' # Safer remote files download
 gem 'image_processing'
