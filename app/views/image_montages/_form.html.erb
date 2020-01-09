@@ -1,0 +1,22 @@
+<%= form_with(model: image_montage, local: true) do |form| %>
+  <% if image_montage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image_montage.errors.count, "error") %> prohibited this image_montage from being saved:</h2>
+
+      <ul>
+        <% image_montage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

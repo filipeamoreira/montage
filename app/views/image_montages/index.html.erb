@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Image Montages</h1>
+
+<div class="header">
+    <aside>
+        <h2>Import CSV with image urls</h2>
+        <%= form_for(@image_montage, url: {action: 'import', method: :post, multipart: true}) do |f| %>
+            <%= f.file_field :file %>
+            <%= f.submit 'Import CSV' %>
+        <% end %>
+    </aside>
+
+    <aside>
+        <h2>Export CSV with image montage urls</h2>
+        <%=  link_to('Download CSV', export_image_montages_path) %>
+    </aside>
+</div>
+
+<%= paginate @image_montages %>
+
+<table>
+    <thead>
+        <tr>
+            <th>Source Image</th>
+            <th>Source Image</th>
+            <th>Image Montage</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @image_montages.each do |image_montage| %>
+            <tr>
+                <% image_montage.images.each do |image| %>
+                    <td><%= link_to(image_tag(image.file.variant(resize_to_limit: [250, 250])), url_for(image.file)) %></td>
+                <% end %>
+                <td><%= link_to(image_tag(image_montage.file.variant(resize_to_limit: [310, 310])), url_for(image_montage.file)) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= paginate @image_montages %>

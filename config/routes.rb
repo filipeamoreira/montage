@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/', to: 'image_montages#index'
+  resources :image_montages do
+    collection do
+      post :import
+      get :export
+    end
+  end
 end
