@@ -11,3 +11,13 @@ This is the description of the tool:
 > It should be possible for me to launch the app myself on heroku and be able to upload a file with thousands of lines, and spin up dozens of workers to speed through them.
 
 > If you think its more efficient to use Sinatra or something else lightweight rather than Rails, that is also fine, as long as its Ruby based, any gems you want to use is up to you.
+
+## How to run the app locally
+
+1. Clone the app
+2. Run: `bundle install`
+3. Run: `bundle exec rake db:create db:migrate`
+4. Run: `bundle exec foreman start`
+5. Visit: `localhost:5000`
+
+## How to run the app on Heroku

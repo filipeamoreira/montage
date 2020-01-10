@@ -31,7 +31,7 @@ gem 'mini_magick'
 gem 'down', '~> 5.0' # Safer remote files download
 gem 'image_processing'
 gem 'kaminari'
-gem 'bootstrap', '~> 4.4.1'
+gem 'foreman'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
