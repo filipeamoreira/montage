@@ -17,7 +17,7 @@ class ImageMontage < ApplicationRecord
       CSV.generate do |csv_file|
         ImageMontage.find_each(batch_size: 100) do |image_montage|
           image_urls = image_montage.images.map(&:url)
-          image_montage_url = Rails.application.routes.url_helpers.rails_blob_path(image_montage.file, only_path: true)
+          image_montage_url = Rails.application.routes.url_helpers.rails_blob_url(image_montage.file)
           csv_file << [*image_urls, image_montage_url]
         end
       end
