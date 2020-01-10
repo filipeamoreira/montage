@@ -1,5 +1,2 @@
 dj_worker_1: bundle exec rake jobs:work
 dj_worker_2: bundle exec rake jobs:work
-dj_worker_3: bundle exec rake jobs:work
-dj_worker_4: bundle exec rake jobs:work
-dj_worker_5: bundle exec rake jobs:work
