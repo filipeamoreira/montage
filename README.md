@@ -19,5 +19,8 @@ This is the description of the tool:
 3. Run: `bundle exec rake db:create db:migrate`
 4. Run: `bundle exec foreman start`
 5. Visit: `localhost:5000`
+6. Load CSV file. A sample file can be found on `doc/csv_input.csv`
 
 ## How to run the app on Heroku
+
+Due to the ephemeral nature of Heroku root file system, this app needs to be deployed with an ActiveStorage storage service set of something other than the default `:local`.
