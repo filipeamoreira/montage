@@ -15,11 +15,12 @@ This is the description of the tool:
 ## How to run the app locally
 
 1. Clone the app
-2. Run: `bundle install`
-3. Run: `bundle exec rake db:create db:migrate`
-4. Run: `bundle exec foreman start`
-5. Visit: `localhost:5000`
-6. Load CSV file. A sample file can be found on `doc/csv_input.csv`
+2. Set your Rails master key in `config/master.key` to the value sent via email
+3. Run: `bundle install`
+4. Run: `bundle exec rake db:create db:migrate`
+5. Run: `bundle exec foreman start`
+6. Visit: `localhost:5000`
+7. Load CSV file. A sample file can be found on `doc/csv_input.csv`
 
 ## How to run the app on Heroku
 
