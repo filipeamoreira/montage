@@ -6,21 +6,22 @@ class GenerateMontageJob < ApplicationJob
 
   def perform(image_urls)
     random_sufix = rand(0..100) # Add this to the temp file name to avoid collision
-    # Create image records for each image url
-    @montage = ImageMontage.new
-    image_urls.each do |url|
-      image = Image.new(url: url)
-      temp_file = Down.download(url)
-      image.file.attach(io: File.open(temp_file), filename: 'image.jpg')
-      @montage.images << image
-    end
 
+    @montage = ImageMontage.new
     # Create montage
-    MiniMagick::Tool::Montage.new do |montage|
-      montage.geometry 'x700+0+0'
-      @montage.images.each { |i| montage << i.url }
-      montage << Rails.root.join("tmp/raw-#{random_sufix}.jpg")
+    MiniMagick::Tool::Montage.new do |image_montage|
+      image_montage.geometry 'x700+0+0'
+      # Create image records for each image url
+      image_urls.each do |url|
+        image = Image.new(url: url)
+        temp_file = Down.download(url)
+        image.file.attach(io: File.open(temp_file), filename: 'image.jpg')
+        @montage.images << image
+        image_montage << temp_file.path
+      end
+      image_montage << Rails.root.join("tmp/raw-#{random_sufix}.jpg")
     end
+    @montage.save
 
     # Add logo watermark
     processed_image = MiniMagick::Image.open(Rails.root.join("tmp/raw-#{random_sufix}.jpg"))
