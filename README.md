@@ -24,4 +24,11 @@ This is the description of the tool:
 
 ## How to run the app on Heroku
 
-Due to the ephemeral nature of Heroku root file system, this app needs to be deployed with an ActiveStorage storage service set of something other than the default `:local`.
+The application is deployed to https://limitless-oasis-48391.herokuapp.com.
+If the application needs to be deployed to another Heroku app the `host` setting needs to be updated on `config/production.rb`. It is currently set to: `config.action_mailer.default_url_options = { host: 'https://limitless-oasis-48391.herokuapp.com' }`.
+
+## TODO
+
+- [x] Fix issue when deploying to Heroku
+- [ ] Add some tests
+- [ ] Clean up the code
